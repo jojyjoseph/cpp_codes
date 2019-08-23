@@ -20,5 +20,7 @@ int main()
 	b2->BaseNonVirtualFunction(b2);
 	d1->BaseNonVirtualFunction(d1);
 
+
+
 	return 0;
 }

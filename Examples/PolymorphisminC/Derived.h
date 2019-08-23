@@ -5,14 +5,16 @@
 
 typedef struct Derived
 {
-	// parent clas
-	Base base;
+	// parent class
+	Base base; 
+
+	void *vtable;// pointer to vtable
 	
 	// member function
 	void (*VirtualOverridenFunction)(void*);
 	void (*BaseNonVirtualFunction)(void *);
 	
-	// member variables
+	// member variables for Derived
 	char role[20];
 }Derived;
 
