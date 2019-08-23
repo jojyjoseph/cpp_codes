@@ -4,7 +4,10 @@
 #include<climits>
 
 // std::bitset is typedef for easy handling and passing as reference
-using HomeSwitch=std::bitset<7>;
+template<int number>
+using HomeSwitchTemplate=std::bitset<number>;
+
+using HomeSwitch = HomeSwitchTemplate<7>;
 
 // enum switches to refer various switches
 enum Switches
