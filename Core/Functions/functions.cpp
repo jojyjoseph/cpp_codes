@@ -53,11 +53,17 @@ int main()
 	std::function<int(f4,char)> fn2 = &f4::nonstatfun;
 	std::cout<<"class non static function "<<fn2(fo,100)<<"\n";
 	
-	// non static class overloaded member function
+	// non static class overloaded member function - using lambdas
 	std::function<int(f4*,char)> fn2_1 = [](f4 *f, char c)->int{return f->nonstaticfunctionoverloaded(c);};
-	std::cout<<"class non static member overloaded function "<<fn2_1(&fo,'a')<<"\n";
+	std::cout<<"class non static member overloaded function -using lambdas "<<fn2_1(&fo,'a')<<"\n";
 	std::function<int(f4*,int)> fn2_2 = [](f4 *f, int i)->int{return f->nonstaticfunctionoverloaded(i);};
-	std::cout<<"class non static member overloaded function "<<fn2_2(&fo,1)<<"\n";
+	std::cout<<"class non static member overloaded function -using lambdas "<<fn2_2(&fo,1)<<"\n";
+
+	// non static class overloaded member function - using lambdas
+	std::function<int(f4*,char)> fn2_3 = static_cast<int (f4::*)(char)>(&f4::nonstaticfunctionoverloaded);
+	std::cout<<"class non static member overloaded function - using static cast "<<fn2_1(&fo,'a')<<"\n";
+	std::function<int(f4*,int)> fn2_4 =  static_cast<int (f4::*)(int)>(&f4::nonstaticfunctionoverloaded);
+	std::cout<<"class non static member overloaded function - using static cast "<<fn2_2(&fo,1)<<"\n";
 
 	//static class member function
 	fn=&f4::statfun;
