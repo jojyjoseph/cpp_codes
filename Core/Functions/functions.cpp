@@ -19,6 +19,8 @@ class f4
 {
 	public:
 		int nonstatfun(char c){return 4;}
+		int nonstaticfunctionoverloaded(char c){return 7;}
+		int nonstaticfunctionoverloaded(int i){return 8;}
 		int static statfun(char){return 5;}
 		int m_num;
 		
@@ -50,6 +52,12 @@ int main()
 	f4 fo(6);
 	std::function<int(f4,char)> fn2 = &f4::nonstatfun;
 	std::cout<<"class non static function "<<fn2(fo,100)<<"\n";
+	
+	// non static class overloaded member function
+	std::function<int(f4*,char)> fn2_1 = [](f4 *f, char c)->int{return f->nonstaticfunctionoverloaded(c);};
+	std::cout<<"class non static member overloaded function "<<fn2_1(&fo,'a')<<"\n";
+	std::function<int(f4*,int)> fn2_2 = [](f4 *f, int i)->int{return f->nonstaticfunctionoverloaded(i);};
+	std::cout<<"class non static member overloaded function "<<fn2_2(&fo,1)<<"\n";
 
 	//static class member function
 	fn=&f4::statfun;
