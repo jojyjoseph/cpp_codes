@@ -2,6 +2,11 @@
 #include<string>
 #include<functional>
 
+int f(float f)
+{
+	std::cout<<"Free function - int f(float)\n";
+}
+
 class X
 {
 	public:
@@ -17,7 +22,11 @@ class X
 		// overloaded non static member function
 		int f1(char c){std::cout<<"int f1(char)\n";}
 
+		// static member function
 		static int f5(std::string s){std::cout<<"static int X::f5)(std::string)\n";}
+
+		// Member variable
+		int m_membervariable{10};
 
 }x;
 
@@ -26,7 +35,11 @@ int main()
 	// Object creation of type X
 	X x;
 	X* xp = &x;
-
+	
+	// Demonstrations
+	int (*fp)(float) = f;
+	fp(1.0);
+	(*fp)(1.0);
 
 	// Function pointers to non static member functions
 	int (X::*fp1)(std::string)=&X::f1;
@@ -55,10 +68,18 @@ int main()
 	(x.*fp1_1)('a');
 	(xp->*fp1_1)('a');
 
+	// static member function pointer are just like normal function pointers
 	int (*fp5)(std::string)=&X::f5;
 	X::f5(std::string{});
 	fp5(std::string{});
 	(*fp5)(std::string{});
+
+	// pointers to member variables
+	int X::*v = &X::m_membervariable;
+	std::cout<<"Member variable : "<<xp->m_membervariable<<"\n";
+	std::cout<<"Member variable : "<<xp->*v<<"\n";
+	std::cout<<"Member variable : "<<x.*v<<"\n";
+	
 
 	return 0;
 }
