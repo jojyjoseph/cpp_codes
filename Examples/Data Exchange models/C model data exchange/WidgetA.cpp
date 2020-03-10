@@ -19,7 +19,7 @@ int widgetA_output(WidgetA * w)
 	return w->varA1;
 }
 
-void WidgetA_writer(WidgetA * w, int value)
+void WidgetA_setVarA2(WidgetA * w, int value)
 {
 	Page * page = (Page *)w->owner;
 }
