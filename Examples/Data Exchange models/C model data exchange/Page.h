@@ -19,3 +19,7 @@ void Page_update(Page * page);
 
 int Page_WidgetB_inputProperty(WidgetB * w);
 void Page_WidgetB_writer_WidgetA_varA2(WidgetB *w, int value);
+void Page_WidgetA_signalA1_default(WidgetA *w);
+void Page_WidgetA_signalA2(WidgetA *w);
+void Page_WidgetB_slotB1(WidgetB *w);
+

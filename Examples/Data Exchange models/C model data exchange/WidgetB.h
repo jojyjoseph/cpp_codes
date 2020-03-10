@@ -15,6 +15,9 @@ struct WidgetB
 	// writer function pointer
 	void(*writer)(WidgetB * w, int value);
 
+	// Slot
+	void (*SlotSignalB1)(WidgetB *w);
+
 	// variable
 	int varB1;
 	int varB2;
@@ -22,5 +25,7 @@ struct WidgetB
 
 void WidgetB_initialize(WidgetB *w);
 void WidgetB_update(WidgetB * w);
-
 int WidgetB_Output_varB1(WidgetB * w);
+void WidgetB_internalFunc1(WidgetB * w);
+void WidgetB_SlotSignalB1(WidgetB * w);
+

@@ -16,6 +16,12 @@ struct WidgetA
 
 	// input function pointer
 	int(*input)(WidgetA * w);
+
+	// signalA1 function pointer - not connected to any slot - will call the default function
+	void (*signalA1)(WidgetA *w);
+
+	// signalA2 function pointer - connected to a slot
+	void (*signalA2)(WidgetA *w);
 };
 
 void WidgetA_initialize(WidgetA * w);

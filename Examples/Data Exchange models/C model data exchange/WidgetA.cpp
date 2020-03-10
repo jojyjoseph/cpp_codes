@@ -9,6 +9,8 @@ void WidgetA_initialize(WidgetA * w)
 
 void WidgetA_update(WidgetA * w)
 {
+	w->signalA1(w);
+	w->signalA2(w);
 	std::cout << "WidgetA updated\n";
 }
 
