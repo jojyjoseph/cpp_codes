@@ -3,8 +3,19 @@
 
 #include<iostream>
 
+// dummy No operation function in case if nothing is connected to the writer
+void WidgetB_writer_Noop(WidgetB * w, int value)
+{
+	;
+}
+
 void WidgetB_initialize(WidgetB * w)
 {
+	/*
+	 * Widget writer is iniitialized to the default function which can be overridden by the parent/owner
+	 */
+	w->writer = WidgetB_writer_Noop;
+
 	std::cout << "WidgetB initialize\n";
 	/*
 	 *Slot signal initialization
