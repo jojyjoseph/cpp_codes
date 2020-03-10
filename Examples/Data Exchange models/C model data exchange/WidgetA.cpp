@@ -1,5 +1,5 @@
 #include "WidgetA.h"
-
+#include "Page.h"
 #include<iostream>
 
 void WidgetA_initialize(WidgetA * w)
@@ -19,7 +19,7 @@ int widgetA_output(WidgetA * w)
 	return w->varA1;
 }
 
-void WidgetA_setVarA2(WidgetA * w, int value)
+void WidgetA_writer(WidgetA * w, int value)
 {
-	w->varA2 = value;
+	Page * page = (Page *)w->owner;
 }
